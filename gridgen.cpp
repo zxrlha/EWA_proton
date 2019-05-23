@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdio>
+#include <vector>
 #include <LHAPDF/LHAPDF.h>
 #include <fmt/format.h>
 #include <fmt/ostream.h>
@@ -74,10 +74,10 @@ void write_a_function(std::ostream& out, const std::vector<double>& vy, const st
 void write_output(std::ostream& out, const std::string& name, int type)
 {
     //ranges
-    double Qmin = 80.385;
-    double Qmax = 1000000;
-    double xmin = 1e-7;
-    double xmax = 1 - 1e-7;
+    double Qmin = 80.385;//minimal Q (factorisation scale)
+    double Qmax = 1000000;//maximal Q (factorisation scale)
+    double xmin = 1e-7;//minimal x (energy fraction)
+    double xmax = 1 - 1e-7;//maximal x (energy fraction)
     double ylow = log(xmin);
     double yupp = log(xmax);
     double zlow = log(Qmin);

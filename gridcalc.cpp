@@ -1,9 +1,5 @@
 #include "gridcalc.hpp"
-#include <iostream>
-#include <cstdio>
 #include <LHAPDF/LHAPDF.h>
-#include <fmt/format.h>
-#include <fmt/ostream.h>
 
 using namespace std;
 
@@ -23,23 +19,30 @@ namespace
 
 double integrand(double& t)
 {
+	//PDF name in LHAPDF
     static auto pdf = LHAPDF::mkPDF("PDF4LHC15_nlo_100_pdfas", 0);
     double Q = Q_internal;
     double Q2 = Q * Q;
     double y = pow(x_internal, t);
     double z = pow(x_internal, 1 - t);
+    //For W+: positive charged (anti-)quarks: dbar,u,sbar,c,bbar
     std::vector<double> Qp{-1, 2, -3, 4, -5};
+    //For W-: negative charged (anti-)quarks: d,ubar,s,cbar,b
     std::vector<double> Qm{1, -2, 3, -4, 5};
+    //For Z: all quarks
     std::vector<double> Qpm{1, -1, 2, -2, 3, -3, 4, -4, 5, -5};
     std::vector<double> Qv;
     switch (type_internal)
     {
+        //W+
         case 24:
             Qv = Qp;
             break;
+        //W-
         case -24:
             Qv = Qm;
             break;
+        //Z
         case 23:
             Qv = Qpm;
             break;

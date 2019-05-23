@@ -37,7 +37,13 @@ Parameters:
 
 - real*8 x: the energy fraction of the W/Z boson.
 - real*8 Q2: the square of factorisation scale Q.
-- integer pol: the polarisation of the W/Z boson.
+- integer pol: the helicity of the W/Z boson.
+
+## Customize:
+Note that you need to type **make** again to re-generate the grid after modifications.
+
+- To modify the range of **x** and **Q** of the generated grid, please open the file **gridgen.cpp* and modify the variable **xmin**,**xmax**,**Qmin**,**Qmax** in the first several lines of function **write_output**. Note that outside such range the grid will also return a value through extrapolation, which is not as reliable as interpolation inside the range but usually acceptable.
+- To modify the (anti-)quark PDF adopted, please open the file **gridcalc.cpp** and modify the call to **LHAPDF::mkPDF**. The first argument is the name of PDF in LHAPDF and the second argument is the set number of such PDF. You should have the corresponding PDF installed through LHAPDF.
 
 ## Brief explanation for the code:
 

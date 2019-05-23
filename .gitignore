@@ -1,0 +1,24 @@
+# autotools output
+/autom4te.cache/
+/config.*
+stamp-h?
+/*-config.hpp
+/aclocal.m4
+Makefile
+Makefile.in
+/configure
+# compile objects
+*.o
+.deps
+.libs
+*.lo
+*.la
+*.a
+# make dist
+/*.tar.gz
+# vim termporary file
+*.swp
+*~
+# Mac file
+.DS_Store
+/doc
